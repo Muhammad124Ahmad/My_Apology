@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:(</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Dancing Script', cursive;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffeef8 0%, #e8f4fd 25%, #f0e8ff 50%, #fff0f8 75%, #e8fff0 100%);
+            position: relative;
+        }
+
+        .magical-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(173, 216, 230, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 60% 20%, rgba(221, 160, 221, 0.2) 0%, transparent 50%);
+        }
+
+        .light-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+            animation: lightRays 8s ease-in-out infinite;
+        }
+
+        @keyframes lightRays {
+            0%, 100% { opacity: 0.3; transform: rotate(0deg); }
+            50% { opacity: 0.6; transform: rotate(2deg); }
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 25%; left: 85%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { top: 60%; left: 15%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { top: 80%; left: 75%; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { top: 35%; left: 60%; animation-delay: 2s; }
+        .sparkle:nth-child(6) { top: 70%; left: 40%; animation-delay: 2.5s; }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card.glow {
+            animation: magicalGlow 1s ease-out;
+        }
+
+        @keyframes magicalGlow {
+            0% { filter: drop-shadow(0 0 0 rgba(255, 182, 193, 0)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255, 182, 193, 0.8)); }
+            100% { filter: drop-shadow(0 0 0 rgba(255, 182, 193, 0)); }
+        }
+
+        /* Decorative Elements */
+        .cake {
+            position: absolute;
+            top: 10%;
+            right: 8%;
+            width: 15vw;
+            min-width: 80px;
+            max-width: 120px;
+            z-index: 5;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .sheep {
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            width: 12vw;
+            min-width: 70px;
+            max-width: 100px;
+            z-index: 5;
+            animation: sheepMove 6s ease-in-out infinite;
+        }
+
+        .lotus-left {
+            position: absolute;
+            bottom: 20%;
+            left: 15%;
+            width: 10vw;
+            min-width: 60px;
+            max-width: 90px;
+            z-index: 3;
+            animation: sway 5s ease-in-out infinite;
+        }
+
+        .lotus-right {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 8vw;
+            min-width: 50px;
+            max-width: 70px;
+            z-index: 3;
+            animation: sway 4s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+
+        @keyframes sheepMove {
+            0%, 100% { transform: translateX(0px) scale(1); }
+            25% { transform: translateX(5px) scale(1.05); }
+            75% { transform: translateX(-3px) scale(0.98); }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-2deg) scale(1); }
+            50% { transform: rotate(2deg) scale(1.05); }
+        }
+
+        /* Text Card */
+        .text-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            width: 70%;
+            max-width: 400px;
+            min-width: 280px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 8;
+        }
+
+        .text-line {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            color: #8b4b8c;
+            text-align: center;
+            margin: 0.8rem 0;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+            min-height: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* SVG Illustrations */
+        .cake svg, .sheep svg, .lotus-left svg, .lotus-right svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .card {
+                aspect-ratio: 3/4;
+            }
+            
+            .text-card {
+                width: 85%;
+                padding: 2rem 1.5rem;
+            }
+            
+            .cake {
+                top: 8%;
+                right: 5%;
+                width: 20vw;
+            }
+            
+            .sheep {
+                bottom: 12%;
+                left: 3%;
+                width: 18vw;
+            }
+            
+            .lotus-left {
+                bottom: 25%;
+                left: 12%;
+                width: 15vw;
+            }
+            
+            .lotus-right {
+                top: 15%;
+                left: 8%;
+                width: 12vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-card {
+                width: 90%;
+                padding: 1.5rem 1rem;
+            }
+            
+            .text-line {
+                margin: 0.6rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden audio element -->
+    <audio autoplay loop>
+        <source src="your-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="magical-background">
+        <div class="light-rays"></div>
+        <div class="sparkles">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card" id="magicalCard">
+            <!-- Red Velvet Cake -->
+            <div class="cake">
+                <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cake Base -->
+                    <ellipse cx="60" cy="85" rx="45" ry="8" fill="#8B4513" opacity="0.3"/>
+                    <!-- Bottom Layer -->
+                    <rect x="20" y="60" width="80" height="25" rx="5" fill="#8B0000"/>
+                    <rect x="20" y="60" width="80" height="8" rx="5" fill="#DC143C"/>
+                    <!-- Middle Layer -->
+                    <rect x="30" y="45" width="60" height="20" rx="4" fill="#8B0000"/>
+                    <rect x="30" y="45" width="60" height="6" rx="4" fill="#DC143C"/>
+                    <!-- Top Layer -->
+                    <rect x="40" y="35" width="40" height="15" rx="3" fill="#8B0000"/>
+                    <rect x="40" y="35" width="40" height="5" rx="3" fill="#DC143C"/>
+                    <!-- Decorative Cream -->
+                    <path d="M25 60 Q30 55 35 60 Q40 55 45 60 Q50 55 55 60 Q60 55 65 60 Q70 55 75 60 Q80 55 85 60 Q90 55 95 60" 
+                          stroke="#FFF8DC" stroke-width="3" fill="none"/>
+                    <path d="M35 45 Q40 40 45 45 Q50 40 55 45 Q60 40 65 45 Q70 40 75 45" 
+                          stroke="#FFF8DC" stroke-width="2.5" fill="none"/>
+                    <!-- Cherry on top -->
+                    <circle cx="60" cy="30" r="4" fill="#FF0000"/>
+                    <path d="M60 26 Q62 20 65 18" stroke="#228B22" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+
+            <!-- Cute Sheep -->
+            <div class="sheep">
+                <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Body -->
+                    <ellipse cx="50" cy="50" rx="30" ry="20" fill="#F5F5F5"/>
+                    <!-- Wool texture -->
+                    <circle cx="35" cy="40" r="8" fill="#FFFFFF" opacity="0.8"/>
+                    <circle cx="50" cy="35" r="9" fill="#FFFFFF" opacity="0.8"/>
+                    <circle cx="65" cy="40" r="8" fill="#FFFFFF" opacity="0.8"/>
+                    <circle cx="40" cy="55" r="7" fill="#FFFFFF" opacity="0.8"/>
+                    <circle cx="60" cy="55" r="7" fill="#FFFFFF" opacity="0.8"/>
+                    <!-- Head -->
+                    <ellipse cx="75" cy="45" rx="12" ry="15" fill="#F5F5F5"/>
+                    <!-- Ears -->
+                    <ellipse cx="70" cy="35" rx="4" ry="6" fill="#FFB6C1"/>
+                    <ellipse cx="80" cy="35" rx="4" ry="6" fill="#FFB6C1"/>
+                    <!-- Eyes -->
+                    <circle cx="72" cy="42" r="2" fill="#000"/>
+                    <circle cx="78" cy="42" r="2" fill="#000"/>
+                    <circle cx="73" cy="41" r="0.5" fill="#FFF"/>
+                    <circle cx="79" cy="41" r="0.5" fill="#FFF"/>
+                    <!-- Nose -->
+                    <ellipse cx="75" cy="48" rx="1.5" ry="1" fill="#FFB6C1"/>
+                    <!-- Legs -->
+                    <rect x="35" y="65" width="4" height="12" fill="#000"/>
+                    <rect x="45" y="65" width="4" height="12" fill="#000"/>
+                    <rect x="55" y="65" width="4" height="12" fill="#000"/>
+                    <rect x="65" y="65" width="4" height="12" fill="#000"/>
+                </svg>
+            </div>
+
+            <!-- Lotus Flowers -->
+            <div class="lotus-left">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer petals -->
+                    <ellipse cx="40" cy="50" rx="15" ry="25" fill="#FFB6C1" opacity="0.8" transform="rotate(0 40 40)"/>
+                    <ellipse cx="40" cy="50" rx="15" ry="25" fill="#FFB6C1" opacity="0.8" transform="rotate(45 40 40)"/>
+                    <ellipse cx="40" cy="50" rx="15" ry="25" fill="#FFB6C1" opacity="0.8" transform="rotate(90 40 40)"/>
+                    <ellipse cx="40" cy="50" rx="15" ry="25" fill="#FFB6C1" opacity="0.8" transform="rotate(135 40 40)"/>
+                    <!-- Inner petals -->
+                    <ellipse cx="40" cy="45" rx="8" ry="15" fill="#FF69B4" opacity="0.9" transform="rotate(22.5 40 40)"/>
+                    <ellipse cx="40" cy="45" rx="8" ry="15" fill="#FF69B4" opacity="0.9" transform="rotate(67.5 40 40)"/>
+                    <ellipse cx="40" cy="45" rx="8" ry="15" fill="#FF69B4" opacity="0.9" transform="rotate(112.5 40 40)"/>
+                    <ellipse cx="40" cy="45" rx="8" ry="15" fill="#FF69B4" opacity="0.9" transform="rotate(157.5 40 40)"/>
+                    <!-- Center -->
+                    <circle cx="40" cy="40" r="6" fill="#FFD700"/>
+                    <!-- Stem -->
+                    <rect x="38" y="65" width="4" height="15" fill="#228B22"/>
+                </svg>
+            </div>
+
+            <div class="lotus-right">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer petals -->
+                    <ellipse cx="40" cy="50" rx="12" ry="20" fill="#DDA0DD" opacity="0.8" transform="rotate(0 40 40)"/>
+                    <ellipse cx="40" cy="50" rx="12" ry="20" fill="#DDA0DD" opacity="0.8" transform="rotate(60 40 40)"/>
+                    <ellipse cx="40" cy="50" rx="12" ry="20" fill="#DDA0DD" opacity="0.8" transform="rotate(120 40 40)"/>
+                    <!-- Inner petals -->
+                    <ellipse cx="40" cy="45" rx="6" ry="12" fill="#DA70D6" opacity="0.9" transform="rotate(30 40 40)"/>
+                    <ellipse cx="40" cy="45" rx="6" ry="12" fill="#DA70D6" opacity="0.9" transform="rotate(90 40 40)"/>
+                    <ellipse cx="40" cy="45" rx="6" ry="12" fill="#DA70D6" opacity="0.9" transform="rotate(150 40 40)"/>
+                    <!-- Center -->
+                    <circle cx="40" cy="40" r="5" fill="#FFD700"/>
+                    <!-- Stem -->
+                    <rect x="38" y="60" width="4" height="20" fill="#228B22"/>
+                </svg>
+            </div>
+
+            <!-- Text Card -->
+            <div class="text-card">
+                <div class="text-line">I am Sorry Kainat 😞</div>
+                <div class="text-line">For that 'thumbsup'</div>
+                <div class="text-line">For saying 'Thk' to very lethal text</div>
+                <div class="text-line">Please mujhe maaf krdo....</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Magical glow effect on tap/click
+        const card = document.getElementById('magicalCard');
+        
+        card.addEventListener('click', function() {
+            this.classList.add('glow');
+            setTimeout(() => {
+                this.classList.remove('glow');
+            }, 1000);
+        });
+
+        // Touch-friendly interaction
+        card.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            this.style.transform = 'scale(0.98)';
+        });
+
+        card.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            this.style.transform = 'scale(1.02)';
+            this.classList.add('glow');
+            setTimeout(() => {
+                this.classList.remove('glow');
+                this.style.transform = 'scale(1)';
+            }, 1000);
+        });
+
+        // Enhanced sparkle animation
+        function createRandomSparkles() {
+            const sparklesContainer = document.querySelector('.sparkles');
+            
+            setInterval(() => {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                
+                sparklesContainer.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 3000);
+            }, 2000);
+        }
+
+        // Initialize random sparkles
+        createRandomSparkles();
+
+        // Sheep blinking animation
+        function addSheepBlinking() {
+            const sheepEyes = document.querySelectorAll('.sheep circle[fill="#000"]');
+            
+            setInterval(() => {
+                sheepEyes.forEach(eye => {
+                    eye.style.transform = 'scaleY(0.1)';
+                    setTimeout(() => {
+                        eye.style.transform = 'scaleY(1)';
+                    }, 150);
+                });
+            }, 4000 + Math.random() * 3000);
+        }
+
+        addSheepBlinking();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96cfe5be940290a4',t:'MTc1NDgzMzE0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
